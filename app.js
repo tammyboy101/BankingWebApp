@@ -1,4 +1,4 @@
-const apiUrl = "https://lively-hill-0904cef10.6.azurestaticapps.net"; // Replace with your Azure API URL
+const apiUrl = "https://banking-app-function.azurewebsites.net/api/signup?"; // Replace with your Azure API URL
 
 document.getElementById("signup").addEventListener("click", async () => {
     const email = document.getElementById("email").value;
