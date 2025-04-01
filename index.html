@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Demo</title>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <h2>Banking System</h2>
+    <div>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="signup">Sign Up</button>
+        <button id="login">Login</button>
+    </div>
+    <div id="banking" style="display:none;">
+        <h3>Welcome, <span id="user-email"></span></h3>
+        <p>Balance: ₹<span id="balance">0</span></p>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button id="deposit">Deposit</button>
+        <button id="withdraw">Withdraw</button>
+        <button id="logout">Logout</button>
+    </div>
+</body>
+</html>
