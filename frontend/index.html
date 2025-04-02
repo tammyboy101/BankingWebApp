@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Demo</title>
-    <script defer src="app.js"></script>
+    <title>Banking Portal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Banking System</h2>
-    <div>
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button id="signup">Sign Up</button>
-        <button id="login">Login</button>
+    <div class="container">
+        <h2>Welcome to MyBank</h2>
+        <p>Secure & Simple Online Banking</p>
+
+        <div class="form-container">
+            <h3>Sign Up</h3>
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button id="signup-btn">Sign Up</button>
+            <p class="message" id="message"></p>
+        </div>
     </div>
-    <div id="banking" style="display:none;">
-        <h3>Welcome, <span id="user-email"></span></h3>
-        <p>Balance: ₹<span id="balance">0</span></p>
-        <input type="number" id="amount" placeholder="Enter amount">
-        <button id="deposit">Deposit</button>
-        <button id="withdraw">Withdraw</button>
-        <button id="logout">Logout</button>
-    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
