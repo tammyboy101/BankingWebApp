@@ -1,58 +1,31 @@
-const apiUrl = "https://banking-app-function.azurewebsites.net/api/signup?"; // Replace with your Azure API URL
-
-document.getElementById("signup").addEventListener("click", async () => {
+document.getElementById("signup-btn").addEventListener("click", async function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    
-    const response = await fetch(`${apiUrl}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
+    const message = document.getElementById("message");
 
-    alert(await response.text());
-});
-
-document.getElementById("login").addEventListener("click", async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    
-    const response = await fetch(`${apiUrl}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
-
-    const data = await response.json();
-    if (data.success) {
-        document.getElementById("banking").style.display = "block";
-        document.getElementById("user-email").innerText = email;
-        document.getElementById("balance").innerText = data.balance;
-    } else {
-        alert(data.message);
+    if (!email || !password) {
+        message.textContent = "Please enter email and password!";
+        return;
     }
-});
 
-document.getElementById("deposit").addEventListener("click", async () => {
-    const amount = parseInt(document.getElementById("amount").value);
-    
-    const response = await fetch(`${apiUrl}/deposit`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount })
-    });
+    try {
+        const response = await fetch("https://banking-app-function.azurestaticapps.net/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
 
-    document.getElementById("balance").innerText = await response.text();
-});
+        const data = await response.json();
 
-document.getElementById("withdraw").addEventListener("click", async () => {
-    const amount = parseInt(document.getElementById("amount").value);
-    
-    const response = await fetch(`${apiUrl}/withdraw`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount })
-    });
-
-    document.getElementById("balance").innerText = await response.text();
+        if (response.ok) {
+            message.style.color = "green";
+            message.textContent = "Sign Up Successful!";
+        } else {
+            message.style.color = "red";
+            message.textContent = `Error: ${data.message}`;
+        }
+    } catch (error) {
+        message.textContent = "Failed to connect. Check console for details.";
+        console.error(error);
+    }
 });
